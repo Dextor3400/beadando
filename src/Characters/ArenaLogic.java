@@ -93,7 +93,9 @@ class ArenaLogic {
 				"Nydoegan",
 				"Galilith",
 				"Dret",
-				"Aliedia",		
+				"Aliedia",	
+				"REFORMED",
+				"TheLegend27"
 		};
 		
 		String characterName = characterNames[rand.nextInt(characterNames.length)];
@@ -103,8 +105,13 @@ class ArenaLogic {
 		
 		System.out.println("Karakter létrehozva.");
 		System.out.println("Adatai:");
-				
-		return new Basic(characterName,characterHealth,characterArmor,characterAttackPower);
+		
+		if(characterName.equalsIgnoreCase("TheLegend27")) {
+			return new Basic(characterName,9999,9999,9999);
+		}else {
+			return new Basic(characterName,characterHealth,characterArmor,characterAttackPower);
+		}
+		
 
 	}
 	
@@ -275,7 +282,11 @@ class ArenaLogic {
 								
 			}while(!playerAttackPowerChecker);
 			
-			customPlayer = new Custom(playerName,playerHealth,playerArmor,playerAttackPower);
+			if(playerName.equalsIgnoreCase("RusznakAttila") || playerName.equalsIgnoreCase("Rusznak Attila") || playerName.equalsIgnoreCase("RusznákAttila") || playerName.equalsIgnoreCase("Rusznák Attila")) {	//easter egg
+				customPlayer = new Custom(playerName,9999,9999,9999);
+			}else {
+				customPlayer = new Custom(playerName,playerHealth,playerArmor,playerAttackPower);
+			}						
 		
 		}
 		
