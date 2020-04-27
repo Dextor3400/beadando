@@ -1,7 +1,5 @@
 package Characters;
 
-import Models.Ellenseg;
-
 public class Basic extends Character {
 
 	public Basic() {
@@ -12,8 +10,12 @@ public class Basic extends Character {
 		super(nev);
 	}
 	
+	public Basic(String nev, int eletero, int tamadoero, int pancel) {
+		super(nev, eletero, tamadoero, pancel);
+	}
+	
 
-	@Override
+
 	public boolean harcol(Ellenseg ellenseg) {
 		
 		ellenseg.setEletero(ellenseg.getEletero()-this.getTamadoero());

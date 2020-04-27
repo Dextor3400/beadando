@@ -1,11 +1,10 @@
-import Models.Arena;
-import Models.Jatekos;
+import Characters.Arena;
+
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		//Arena.toborzas();
 		Arena.kezdjuk();
 
 	}

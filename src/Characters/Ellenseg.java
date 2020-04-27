@@ -1,8 +1,8 @@
-package Models;
+package Characters;
 
-import Characters.Basic;
+import Models.Szint;
 
-public class Ellenseg implements Szint {
+public class Ellenseg extends Character{
 
 	private String nev;
 	private int eletero;
@@ -13,37 +13,24 @@ public class Ellenseg implements Szint {
 	public Ellenseg() {
 		
 	}
-	/*
+	
 	public Ellenseg(String nev) {
 		this.nev=nev;
-		switch(Jatekos.getSzint()) {
-			case 0:
-				this.setEletero(ELET_LEVEL_ONE);
-				this.setTamadoero(TAMADOERO_LEVEL_ONE);
-				break;
-			case 1:
-				this.setEletero(ELET_LEVEL_TWO);
-				this.setTamadoero(TAMADOERO_LEVEL_TWO);
-				break;
-			case 2:
-				this.setEletero(ELET_LEVEL_THREE);
-				this.setTamadoero(TAMADOERO_LEVEL_THREE);
-				break;
-			case 3:
-				this.setEletero(ELET_LEVEL_FOUR);
-				this.setTamadoero(TAMADOERO_LEVEL_FOUR);
-				break;
-			case 4:
-				this.setEletero(ELET_LEVEL_FIVE);
-				this.setTamadoero(TAMADOERO_LEVEL_FIVE);
-				break;
-				
-		}
+		this.setEletero(ELET_LEVEL_ONE);
+		this.setTamadoero(TAMADOERO_LEVEL_ONE);				
 	}
-	*/
 	
+	
+
+	public Ellenseg(String nev, int eletero, int tamadoero) {
+		this.nev = nev;
+		this.eletero = eletero;
+		this.tamadoero = tamadoero;
+	}
+
 	public String getNev() {
 		return nev;
+		
 	}
 
 	public void setNev(String nev) {
@@ -77,6 +64,12 @@ public class Ellenseg implements Szint {
 	@Override
 	public String toString() {
 		return "Ellenseg [nev=" + nev + ", eletero=" + eletero + ", tamadoero=" + tamadoero + "]";
+	}
+
+	@Override
+	public boolean harcol(Ellenseg e) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

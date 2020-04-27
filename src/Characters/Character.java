@@ -1,6 +1,5 @@
 package Characters;
 
-import Models.Ellenseg;
 import Models.Szint;
 
 public abstract class Character implements Szint {
@@ -22,6 +21,12 @@ public abstract class Character implements Szint {
 		this.pancel = BASIC_PLAYER_ARMOR;
 		this.tamadoero = BASIC_PLAYER_ATTACKPOWER;
 		this.szint = 0;
+	}
+	
+	public Character(String nev, int eletero, int tamadoero) {
+		this.nev = nev;
+		this.eletero = eletero;
+		this.tamadoero = tamadoero;
 	}
 	
 	public Character(String nev, int eletero, int tamadoero, int pancel ) {
@@ -83,6 +88,8 @@ public abstract class Character implements Szint {
 		return "Character [nev=" + nev + ", eletero=" + eletero + ", pancel=" + pancel + ", tamadoero=" + tamadoero
 				+ "]";
 	}
+
+
 	
 	
 	
