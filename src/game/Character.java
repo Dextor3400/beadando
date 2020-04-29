@@ -14,8 +14,7 @@ public abstract class Character  {
 	public Character() {
 		
 	}
-	
-	
+		
 	public Character(String nev, int eletero, int tamadoero) {
 		this.nev = nev;
 		this.eletero = eletero;
@@ -73,5 +72,5 @@ public abstract class Character  {
 	@Override
 	public String toString() {
 		return "Név=" + nev + ", Életerõ=" + eletero + ", Páncél=" + pancel + ", Támadóerõ=" + tamadoero;
-	}		
+	}
 }

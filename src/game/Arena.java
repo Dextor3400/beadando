@@ -27,22 +27,22 @@ public class Arena extends GameplayLogic {
 					int answer = Integer.parseInt(answerString);
 					if(answer == 1) {
 						System.out.println("(New Game Starting)" + "\n");
-						System.out.println("============================================================================================================================================================================================================================================" + "\n");						continue;
-					}else if(answer == 2) {
-						System.out.println("============================================================================================================================================================================================================================================" + "\n");
+						lineBreak();
+						}else if(answer == 2) {
+						lineBreak();
 						System.out.println("Köszönjük a részvételt!");
 						System.out.println("Game Exiting");
 						gameGoing = false;
 						System.exit(0);
 					}else {
-						System.out.println("============================================================================================================================================================================================================================================" + "\n");
+						lineBreak();
 						System.out.println("Köszönjük a részvételt!");
 						System.out.println("Game Exiting");
 						gameGoing = false;
 						System.exit(0);
 					}
 				}else {
-					System.out.println("============================================================================================================================================================================================================================================" + "\n");
+					lineBreak();
 					System.out.println("Köszönjük a részvételt!");
 					System.out.println("Game Exiting");
 					gameGoing = false;
@@ -50,19 +50,19 @@ public class Arena extends GameplayLogic {
 				}
 				
 			} catch (InterruptedException e) {
-				System.out.println("============================================================================================================================================================================================================================================" + "\n");
+				lineBreak();
 				System.out.println("Köszönjük a részvételt!");
 				System.out.println("Game Exiting");
 				gameGoing = false;
 				System.exit(0);
 			} catch(NumberFormatException e) {
-				System.out.println("============================================================================================================================================================================================================================================" + "\n");
+				lineBreak();
 				System.out.println("Köszönjük a részvételt!");
 				System.out.println("Game Exiting");
 				gameGoing = false;
 				System.exit(0);
 			}catch(Exception e) {
-				System.out.println("============================================================================================================================================================================================================================================" + "\n");
+				lineBreak();
 				System.out.println("Köszönjük a részvételt!");
 				System.out.println("Game Exiting");
 				gameGoing = false;
@@ -89,6 +89,7 @@ public class Arena extends GameplayLogic {
 						tutorial();
 						correctAnswer = true;
 					}else if(answer == 2) {
+						lineBreak();
 						correctAnswer = true;
 					}else {
 						System.out.println("Kérlek a megadott lehetõségek közül válassz! (1-2)");
@@ -116,6 +117,7 @@ public class Arena extends GameplayLogic {
 						story();
 						correctAnswer = true;
 					}else if(answer == 2) {
+						lineBreak();
 						correctAnswer = true;
 					}else {
 						System.out.println("Kérlek a megadott lehetõségek közül válassz! (1-2)");
@@ -131,7 +133,7 @@ public class Arena extends GameplayLogic {
 	}
 	
 	public static void tutorial() {
-		System.out.println("============================================================================================================================================================================================================================================" + "\n");
+		lineBreak();
 		System.out.println("Ez egy dungeon crawler típusú játék. \r\n" + 
 				"A karaktereddel különbözõ ellenségeket le kell gyõznöd a továbbjutáshoz.\r\n" + 
 				"Saját karaktert tudsz létrehozni, melynek 4 különbözõ statisztikája van. Van az életereje, a páncélja, ás a támadási ereje.\r\n" + 
@@ -143,16 +145,20 @@ public class Arena extends GameplayLogic {
 				"A döntési szakaszban te döntöd el, hogy támadod az ellenfelet, vagy az életerõdet szeretnéd feltölteni.\r\n" + 
 				"A támadási szakaszban megtámadod a szörnyet, és a Támadási erõdnek megfelelõ sebzést osztasz ki rá.\r\n" + 
 				"A védekezési szakaszban pedig az ellenfél támad téged.\r\n" + 
-				"A célja a játéknak, hogy minden ellefelet legyõzz." + "\n");
-		System.out.println("============================================================================================================================================================================================================================================" + "\n");
-	}
+				"A célja a játéknak, hogy minden ellenfelet legyõzz." + "\n");
+		lineBreak();
+		}
 	
 	public static void story() {
-		System.out.println("============================================================================================================================================================================================================================================" + "\n");
-		System.out.println("Az év 2269, a démonok elkezdték a föld megszállását, te vagy az emberiség utolsó reménye, a prófécia megtestesülése melyet egy vak szerzetes  látott egy látomásában.\r\n" + 
+		lineBreak();
+		System.out.println("Az év 2269, a démonok elkezdték a föld megszállását, te vagy az emberiség utolsó reménye, a prófécia megtestesülése melyet egy vak szerzetes látott egy látomásában.\r\n" + 
 				"Egy tárgy van mely megmentheti az emberiséget melynek neve \"THE HOLY HAND GRENADE\".\r\n" + 
-				"Meg kell szerezned ezt a tárgyat, de ez az ellenséges vonalak mögött van található.\r\n" + 
+				"Meg kell szerezned ezt a tárgyat, de ez az ellenséges vonalak mögött található.\r\n" + 
 				"A tárgy megszerzése a cél ám ezen át kell jutnod a tárgyat védõ ellenségeken!" + "\n");
+		lineBreak();
+	}
+	
+	public static void lineBreak() {
 		System.out.println("============================================================================================================================================================================================================================================" + "\n");
 	}
 	

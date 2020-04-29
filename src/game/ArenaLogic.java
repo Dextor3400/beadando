@@ -89,15 +89,34 @@ class ArenaLogic {
 		
 	}
 	
-	public static String getRandomEnemyComment(Character monster) {
-		String[] enemyComments = {
-			"You Feel like you're going to have a bad time.",
-			monster.getNev() + " is overstimulated",
-			monster.getNev() + " drew near",
-			monster.getNev() + " waddles towards you!",
+	public static String getRandomGameOver() {
+		String[] gameOverScreenText = {
+			"====YOUR DEFEAT HAS BROUGHT CHAOS TO THE FEDERATION. YOUR COWARDICE AND BETRAYAL SHALL BE KNOWN THROUGHOUT THE STARS. DISGRACE WILL FOLLOW YOUR FAMILY FOR CENTURIES.===\r\n" + 
+			"==============================ONCE ADORED AND WORSHIPPED BY ALL, YOUR BODY WILL SERVE AS A REMINDEN OF THE PRICE OF FAILURE.============================================\r\n" + 
+			"=======================================================OH, THE HORRIBLE PAIN OF DEFEAT....==============================================================================\r\n" + 
+			"\r\n" + 
+			"===================================================================GAME OVER=============================================================================================",
+			"==============CONGRATULATIONS!============== " + "\r" + "\n" +
+			"===============YOU HAVE DIED!=============== " + "\r" + "\n" +
+			"=================GAME OVER!================= " + "\r" + "\n",
+			"====================WOW===================== " + "\r" + "\n" +
+			"=================YOU LOST===================" + "\r" + "\n",
+			"You have ignited an accidental nuclear war." + "\r" + "\n" + 
+			"And no, there is no animated display of a " + "\r" + "\n" + 
+			"mushroom cloid with parts of bodies flying " + "\r" + "\n" + 
+			"             through the air." + "\r" + "\n" + 
+			"          We do not reward failure. " + "\r" + "\n" + 
+			"                 Game Over." + "\r" + "\n",
+			"			  Your Score: 00000000 " + "\r" + "\n" +
+			"			       Game over " + "\r" + "\n" ,
+			"                GAME OVER " + "\r" + "\n" +
+			"               INSERT COINS " + 
+			"               TO CONTINUE " + "\r" + "\n" 
+			
+			
 		};
 				
-		return enemyComments[rand.nextInt(enemyComments.length)];
+		return gameOverScreenText[rand.nextInt(gameOverScreenText.length)];
 	}
 	
 	public static Character getRandomPlayer() throws InterruptedException {
@@ -130,9 +149,9 @@ class ArenaLogic {
 		int characterArmor = rand.nextInt(50-10)+10;
 		int characterAttackPower = rand.nextInt(150-75)+75;
 		
-		System.out.println("Karaktered létrehozva.");
-		System.out.println("============================================================================================================================================================================================================================================" + "\n");
-
+		System.out.println("Karaktered létrehozva." + "\n");
+		Arena.lineBreak();
+		
 		Thread.sleep(500);
 		if(characterName.equalsIgnoreCase("Doom Slayer")) {					//easter egg
 			return new Basic(characterName,9999,9999,9999);
@@ -145,7 +164,7 @@ class ArenaLogic {
 		
 		boolean inputChecker = false;
 		int difficultyLevel = -1;
-		System.out.println("============================================================================================================================================================================================================================================" + "\n");
+		Arena.lineBreak();
 		System.out.println("Milyen nehézséget szeretnél beállítani?");
 		System.out.println("Lehetõségek:");
 		System.out.println("1: Piece of Cake (Könnyû)");
@@ -172,7 +191,7 @@ class ArenaLogic {
 				System.out.println("Kérlek írd be a neked megfelelõ nehézség számát! (1-3)");
 			}
 		}while(!inputChecker);
-		Thread.sleep(500);
+		Thread.sleep(750);
 		return difficultyLevel;
 		
 	}
@@ -226,7 +245,8 @@ class ArenaLogic {
 		
 		// PLAYER NAME //
 		
-		if(answer.equalsIgnoreCase("Igen")) {												
+		if(answer.equalsIgnoreCase("Igen")) {		
+			Arena.lineBreak();
 			System.out.println("Kérlek add meg a karaktered nevét.");
 			do {
 				playerName = scan.nextLine();
