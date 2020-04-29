@@ -15,25 +15,48 @@ class ArenaLogic {
 		int n = 0;
 		String[] monsterNames = {
 				"Cryptclaw",
-				"Vilemorph",
-				"Hollowwoman",
-				"Soultaur",
-				"The Sick Mutant",
-				"The Mad Critter",
-				"The Quiet Pest",
 				"The Giant Nightmare Monkey",
-				"The Feral Butcher Leviathan",
-				"The Furry Tomb Hound",
-				"Acidserpent",
-				"Hellseeker",
-				"Guthag",
-				"Poisonhag",
-				"The Volatile Abomination",
-				"The Corrupt Abomination",
-				"The Bronze Witch",
-				"The Grisly Cinder Frog",
-				"The Bloodthirsty Blight Boar",
-				"The Dark Rot Lion"
+				"Arachnotron",
+				"Cacodemon",
+				"Carcass",
+				"Whiplash",
+				"Prowler",
+				"Revenant",
+				"Macubus",
+				"Dread Knight",
+				"Archvile",
+				"Marauder",
+				"Khan Maykr",
+				"Icon of Sin",
+				"Unwilling",
+				"Balder Knight",
+				"Light Crossbow",
+				"Engorged Hollow",
+				"Undead Crystal Soldier",
+				"Crystal Knight",
+				"Undead Attack Dog",
+				"Flaming Attack Dog",
+				"Infested Ghoul",
+				"Darkwraith Knight",
+				"Necromancer",
+				"Crystal Lizard",
+				"Black Knight",
+				"Blowdart Sniper",
+				"Darkmoon Soldiers",
+				"Possessed Tree",
+				"Great Feline",
+				"Mimic",
+				"The Channeler",
+				"Vagrants",
+				"Flowey",
+				"Sans",
+				"Papyrus",
+				"Undyne",
+				"Asgore",
+				"Napstablook",
+				"Froggit",
+				"Doggo",
+				"Undyne the Undying",
 		};
 		
 		if(difficultyLevel == 1) {
@@ -73,8 +96,7 @@ class ArenaLogic {
 			monster.getNev() + " drew near",
 			monster.getNev() + " waddles towards you!",
 		};
-		
-		
+				
 		return enemyComments[rand.nextInt(enemyComments.length)];
 	}
 	
@@ -100,7 +122,7 @@ class ArenaLogic {
 				"Dret",
 				"Aliedia",	
 				"REFORMED",
-				"TheLegend27"
+				"Doom Slayer"
 		};
 		
 		String characterName = characterNames[rand.nextInt(characterNames.length)];
@@ -108,9 +130,11 @@ class ArenaLogic {
 		int characterArmor = rand.nextInt(50-10)+10;
 		int characterAttackPower = rand.nextInt(150-75)+75;
 		
-		System.out.println("Karakter létrehozva.");		
+		System.out.println("Karaktered létrehozva.");
+		System.out.println("============================================================================================================================================================================================================================================" + "\n");
+
 		Thread.sleep(500);
-		if(characterName.equalsIgnoreCase("TheLegend27")) {					//easter egg
+		if(characterName.equalsIgnoreCase("Doom Slayer")) {					//easter egg
 			return new Basic(characterName,9999,9999,9999);
 		}else {
 			return new Basic(characterName,characterHealth,characterAttackPower, characterArmor);
@@ -121,7 +145,7 @@ class ArenaLogic {
 		
 		boolean inputChecker = false;
 		int difficultyLevel = -1;
-		
+		System.out.println("============================================================================================================================================================================================================================================" + "\n");
 		System.out.println("Milyen nehézséget szeretnél beállítani?");
 		System.out.println("Lehetõségek:");
 		System.out.println("1: Piece of Cake (Könnyû)");

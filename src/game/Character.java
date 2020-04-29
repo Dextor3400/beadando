@@ -1,8 +1,8 @@
 package game;
 
-import Models.Szint;
 
-public abstract class Character implements Szint {
+
+public abstract class Character  {
 
 	private String nev;
 	private int eletero;
@@ -15,13 +15,6 @@ public abstract class Character implements Szint {
 		
 	}
 	
-	public Character(String nev) {
-		this.nev = nev;
-		this.eletero = BASIC_PLAYER_HEALTH;
-		this.pancel = BASIC_PLAYER_ARMOR;
-		this.tamadoero = BASIC_PLAYER_ATTACKPOWER;
-		this.szint = 0;
-	}
 	
 	public Character(String nev, int eletero, int tamadoero) {
 		this.nev = nev;

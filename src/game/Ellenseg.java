@@ -1,6 +1,6 @@
 package game;
 
-import Models.Szint;
+
 
 public class Ellenseg extends Character{
 
@@ -13,14 +13,6 @@ public class Ellenseg extends Character{
 	public Ellenseg() {
 		
 	}
-	
-	public Ellenseg(String nev) {
-		this.nev=nev;
-		this.setEletero(ELET_LEVEL_ONE);
-		this.setTamadoero(TAMADOERO_LEVEL_ONE);				
-	}
-	
-	
 
 	public Ellenseg(String nev, int eletero, int tamadoero) {
 		this.nev = nev;
