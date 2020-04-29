@@ -38,26 +38,25 @@ public class GameplayLogic extends Character {
 		}
 		
 		if(myCharacter.getEletero()>0) {
-			System.out.println("You'r Winner!");
+			System.out.println("You'r Winner!" + "\n");
 		}else {
-			System.out.println("Epic fail!");
+			System.out.println("Epic fail!" + "\n");
 		}
 	}
 	
 	
 	public static int playerChoicePhase(Character monster) throws InterruptedException {
 				
-		int healAmount = rand.nextInt(50-1)+1; 
-		System.out.println("--------------------------------------------------------------------------------------");
-		System.out.println();
-		System.out.println("Döntés fázis kezdõdik!");
+		int healAmount = rand.nextInt(200-20)+20; 
+		System.out.println("--------------------------------------------------------------------------------------"+ "\n");
+		System.out.println("Döntés fázis kezdõdik!"+ "\n");
 		System.out.println("Karaktered adatai: ");
-		System.out.println(myCharacter);
+		System.out.println(myCharacter + "\n");
 		System.out.println("Ellenség adatai:");
-		System.out.println(monster);
+		System.out.println(monster + "\n");
 		System.out.println("Mi legyen a következõ lépés?");
 		System.out.println("1: Ellenség támadása (" + myCharacter.getTamadoero() + ") támadóerõvel");
-		System.out.println("2: Karakter gyógyítása (" + healAmount + ") életerõponttal");
+		System.out.println("2: Karakter gyógyítása (" + healAmount + ") életerõponttal"+ "\n");
 		System.out.println("Kérlek a választott döntés számát írd le!");
 		
 		String answerString;
@@ -88,6 +87,8 @@ public class GameplayLogic extends Character {
 				}catch(NumberFormatException e) {
 					System.out.println("Kérlek csak számot írj be!");
 				}
+			}else {
+				System.out.println("Kérlek válassz a lehetõségek közül!");
 			}
 		}while(!answerChecker);
 		System.out.println("--------------------------------------------------------------------------------------");		
@@ -96,9 +97,8 @@ public class GameplayLogic extends Character {
 	}
 		
 	public static void playerAttackPhase(Character monster) throws InterruptedException {
-		System.out.println("--------------------------------------------------------------------------------------");
-		System.out.println();
-		System.out.println("Támadás fázis kezdõdik!");
+		System.out.println("--------------------------------------------------------------------------------------" + "\n");
+		System.out.println("Támadás fázis kezdõdik!" + "\n");
 		System.out.println("szörny elõtte");
 		System.out.println(monster);
 		monster.setEletero(monster.getEletero()-myCharacter.getTamadoero());
@@ -106,32 +106,32 @@ public class GameplayLogic extends Character {
 		System.out.println(monster);
 		
 		if(monster.getEletero()<=0) {
-			myCharacter.setEletero(myCharacter.getEletero()+50);
-			myCharacter.setEletero(myCharacter.getPancel()+20);
-			myCharacter.setTamadoero(myCharacter.getTamadoero()+15);
-			System.out.println("Szörny meghalt, karakter fejlõdött.");
-			System.out.println("Karakter adatai:");
-			System.out.println(myCharacter);
+			
+			int levelUpHealthPoints = rand.nextInt(200-100)+100;
+			int levelUpArmor = rand.nextInt(100-20);
+			int levelUpAttackPower = rand.nextInt(50-10)+10;
+			
+			System.out.println(monster.getNev() + " meghalt!");
+			System.out.println("Karaktered szinten lépett!");
+			System.out.println("Életerõ: " + myCharacter.getEletero() + " + " + "'" + levelUpHealthPoints + "'");
+			System.out.println("Páncél: " + myCharacter.getPancel() + " + " + "'" + levelUpArmor + "'");
+			System.out.println("Támadóerõ: " + myCharacter.getTamadoero() + " + " + "'" + levelUpAttackPower + "'");
+			
+			myCharacter.setEletero(myCharacter.getEletero()+ levelUpHealthPoints);
+			myCharacter.setEletero(myCharacter.getPancel()+levelUpArmor);
+			myCharacter.setTamadoero(myCharacter.getTamadoero()+levelUpAttackPower);
+			Thread.sleep(2000);
 		}
 		System.out.println("--------------------------------------------------------------------------------------");	
 	}
 		
 	public static void playerDefensePhase(Character monster) {
-		System.out.println("--------------------------------------------------------------------------------------");
-		System.out.println();
-		System.out.println("Védekezés fázis kezdõdik!");
-		System.out.println("Elõtte:");
-		System.out.println(myCharacter);
+		System.out.println("--------------------------------------------------------------------------------------" + "\n");
+		System.out.println("Védekezés fázis kezdõdik!" + "\n");
+		System.out.println("'" + ArenaLogic.getRandomEnemyComment(monster) + "'");
+		System.out.println("Karaktered életereje: " + myCharacter.getEletero() + "-" + monster.getTamadoero());
 		myCharacter.setEletero((myCharacter.getEletero()+myCharacter.getPancel())-(monster.getTamadoero()));
-		System.out.println("utána");
-		System.out.println(myCharacter);
 		
 		System.out.println("--------------------------------------------------------------------------------------");
 	}
-
-	@Override
-	public boolean harcol(Ellenseg e) {
-		return false;
-	}
-	
 }

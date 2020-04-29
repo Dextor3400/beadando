@@ -36,13 +36,7 @@ public abstract class Character implements Szint {
 		this.tamadoero = tamadoero;
 		this.szint = 0;
 	}
-	
-	public void tulel() {
-		this.szint++;
-	}
-	
-	public abstract boolean harcol(Ellenseg e);
-
+		
 	public String getNev() {
 		return nev;
 	}
@@ -85,7 +79,6 @@ public abstract class Character implements Szint {
 
 	@Override
 	public String toString() {
-		return "Character [nev=" + nev + ", eletero=" + eletero + ", pancel=" + pancel + ", tamadoero=" + tamadoero
-				+ "]";
+		return "Név=" + nev + ", Életerõ=" + eletero + ", Páncél=" + pancel + ", Támadóerõ=" + tamadoero;
 	}		
 }

@@ -39,15 +39,15 @@ class ArenaLogic {
 		if(difficultyLevel == 1) {
 			do {
 				String monsterName = monsterNames[rand.nextInt(monsterNames.length)];
-				int monsterHealth = rand.nextInt(150-50)+50;
-				int monsterAttackPower = rand.nextInt(100-50)+50;
+				int monsterHealth = rand.nextInt(200-50)+50;
+				int monsterAttackPower = rand.nextInt(150-50)+50;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
 			}while(n < 5);
 		}else if(difficultyLevel == 2) {
 			do {
 				String monsterName = monsterNames[rand.nextInt(monsterNames.length)];
-				int monsterHealth = rand.nextInt(250-100)+150;
+				int monsterHealth = rand.nextInt(250-100)+100;
 				int monsterAttackPower = rand.nextInt(175-50)+50;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
@@ -55,20 +55,30 @@ class ArenaLogic {
 		}else if(difficultyLevel == 3) {
 			do {
 				String monsterName = monsterNames[rand.nextInt(monsterNames.length)];
-				int monsterHealth = rand.nextInt(350-100)+150;
+				int monsterHealth = rand.nextInt(350-150)+150;
 				int monsterAttackPower = rand.nextInt(200-50)+50;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
 			}while(n < 15);
 		}
-								
-		System.out.println("Szörnyek létrehozva!");
-		
+										
 		return monsters;
 		
 	}
 	
-	public static Character getRandomPlayer() {
+	public static String getRandomEnemyComment(Character monster) {
+		String[] enemyComments = {
+			"You Feel like you're going to have a bad time.",
+			monster.getNev() + " is overstimulated",
+			monster.getNev() + " drew near",
+			monster.getNev() + " waddles towards you!",
+		};
+		
+		
+		return enemyComments[rand.nextInt(enemyComments.length)];
+	}
+	
+	public static Character getRandomPlayer() throws InterruptedException {
 		String[] characterNames = {	
 				"Revolver Butcher",
 				"F3AR R3APER" ,
@@ -94,12 +104,12 @@ class ArenaLogic {
 		};
 		
 		String characterName = characterNames[rand.nextInt(characterNames.length)];
-		int characterHealth = rand.nextInt(500-150)+150;
-		int characterArmor = rand.nextInt(20-10)+10;
+		int characterHealth = rand.nextInt(500-100)+100;
+		int characterArmor = rand.nextInt(50-10)+10;
 		int characterAttackPower = rand.nextInt(150-75)+75;
 		
 		System.out.println("Karakter létrehozva.");		
-		
+		Thread.sleep(500);
 		if(characterName.equalsIgnoreCase("TheLegend27")) {					//easter egg
 			return new Basic(characterName,9999,9999,9999);
 		}else {
@@ -107,7 +117,7 @@ class ArenaLogic {
 		}		
 	}
 	
-	public static int setDifficultyLevel() {
+	public static int setDifficultyLevel() throws InterruptedException {
 		
 		boolean inputChecker = false;
 		int difficultyLevel = -1;
@@ -116,9 +126,8 @@ class ArenaLogic {
 		System.out.println("Lehetõségek:");
 		System.out.println("1: Piece of Cake (Könnyû)");
 		System.out.println("2: Let's Rock (Közepes)");
-		System.out.println("3: Come get Some (Nehéz)");		
+		System.out.println("3: Come get Some (Nehéz)" + "\n");		
 		
-		System.out.println();
 		System.out.println("Kérlek írd be a neked megfelelõ nehézséget!");
 		
 		
@@ -139,12 +148,12 @@ class ArenaLogic {
 				System.out.println("Kérlek írd be a neked megfelelõ nehézség számát! (1-3)");
 			}
 		}while(!inputChecker);
-		
+		Thread.sleep(500);
 		return difficultyLevel;
 		
 	}
 	
-	public static Character makeCharacter() {
+	public static Character makeCharacter() throws InterruptedException {
 		Character basicPlayer = null;
 		Custom customPlayer = null;
 			
@@ -204,6 +213,7 @@ class ArenaLogic {
 				}
 				
 			}while(!playerNameChecker);
+			Thread.sleep(500);
 					
 		// PLAYER HEALTHPOINTS //
 			
@@ -227,6 +237,7 @@ class ArenaLogic {
 				}
 												
 			}while(!playerHealthChecker);
+			Thread.sleep(500);
 			
 			
 		// PLAYER ARMOR //
@@ -250,6 +261,7 @@ class ArenaLogic {
 					System.out.println("Kérlek írj be értéket!");
 				}
 			}while(!playerArmorChecker);
+			Thread.sleep(500);
 		
 		
 		// PLAYER ATTACK POWER //
@@ -285,8 +297,10 @@ class ArenaLogic {
 		}
 		
 		if(answer.equalsIgnoreCase("Nem")) {
+			Thread.sleep(500);
 			return basicPlayer;
 		}else {
+			Thread.sleep(500);
 			return customPlayer;
 		}				
 	}

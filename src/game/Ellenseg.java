@@ -63,17 +63,6 @@ public class Ellenseg extends Character{
 
 	@Override
 	public String toString() {
-		return "Ellenseg [nev=" + nev + ", eletero=" + eletero + ", tamadoero=" + tamadoero + "]";
+		return "Név=" + nev + ", Életerõ=" + eletero + ", Támadóerõ=" + tamadoero;
 	}
-
-	@Override
-	public boolean harcol(Ellenseg e) {
-		return false;
-	}
-	
-	
-	
-	
-	
-	
 }
