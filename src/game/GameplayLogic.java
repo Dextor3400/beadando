@@ -14,7 +14,6 @@ public class GameplayLogic extends Character {
 	static List<Character> monsters;
 	
 	static boolean answerChecker;
-	static int answer = -1;
 	
 	public static void gameplayLoop() throws InterruptedException  {
 		
@@ -23,20 +22,30 @@ public class GameplayLogic extends Character {
 		
 		for(Character monster : monsters) {
 			do {
-					GameplayLogic.playerChoicePhase(monster);					
-					Thread.sleep(3000);
-					GameplayLogic.playerAttackPhase(monster);
-					Thread.sleep(3000);
+				if(myCharacter.getEletero()>0) {
+					int choice = GameplayLogic.playerChoicePhase(monster);					
+					Thread.sleep(2000);
+					if(choice == 1) {
+						GameplayLogic.playerAttackPhase(monster);
+					}
+					Thread.sleep(2000);
 					if(monster.getEletero()>0) {
 						GameplayLogic.playerDefensePhase(monster);
-						Thread.sleep(3000);
+						Thread.sleep(2000);						
 					}
+				}
 			}while(myCharacter.getEletero()>0 && monster.getEletero()>0);
+		}
+		
+		if(myCharacter.getEletero()>0) {
+			System.out.println("You'r Winner!");
+		}else {
+			System.out.println("Epic fail!");
 		}
 	}
 	
 	
-	public static void playerChoicePhase(Character monster) throws InterruptedException {
+	public static int playerChoicePhase(Character monster) throws InterruptedException {
 				
 		int healAmount = rand.nextInt(50-1)+1; 
 		System.out.println("--------------------------------------------------------------------------------------");
@@ -52,6 +61,7 @@ public class GameplayLogic extends Character {
 		System.out.println("Kérlek a választott döntés számát írd le!");
 		
 		String answerString;
+		int playerChoice = -1;
 		
 		answerChecker = false;
 		
@@ -63,12 +73,14 @@ public class GameplayLogic extends Character {
 					if(answer == 1) {
 						System.out.println("Döntés regisztrálva. (1)");
 						System.out.println("Következõ fázis indul.");
+						playerChoice = 1;
 						answerChecker = true;
 					}else if(answer == 2) {
 						myCharacter.setEletero(myCharacter.getEletero()+healAmount);
 						System.out.println("Döntés regisztrálva. (2)");
 						System.out.println("Karakter élete: " + + myCharacter.getEletero());
 						System.out.println("Következõ fázis indul.");
+						playerChoice = 2;
 						answerChecker = true;						
 					}else {
 						System.out.println("Kérlek válassz a lehetõségek közül: (1-2)");
@@ -78,6 +90,8 @@ public class GameplayLogic extends Character {
 				}
 			}
 		}while(!answerChecker);
+		System.out.println("--------------------------------------------------------------------------------------");		
+		return playerChoice;
 				
 	}
 		
@@ -108,7 +122,7 @@ public class GameplayLogic extends Character {
 		System.out.println("Védekezés fázis kezdõdik!");
 		System.out.println("Elõtte:");
 		System.out.println(myCharacter);
-		myCharacter.setEletero(myCharacter.getEletero()-(monster.getTamadoero())-myCharacter.getPancel());
+		myCharacter.setEletero((myCharacter.getEletero()+myCharacter.getPancel())-(monster.getTamadoero()));
 		System.out.println("utána");
 		System.out.println(myCharacter);
 		
