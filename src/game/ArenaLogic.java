@@ -40,7 +40,7 @@ class ArenaLogic {
 			do {
 				String monsterName = monsterNames[rand.nextInt(monsterNames.length)];
 				int monsterHealth = rand.nextInt(150-50)+50;
-				int monsterAttackPower = rand.nextInt(50-10)+10;
+				int monsterAttackPower = rand.nextInt(100-50)+50;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
 			}while(n < 5);
@@ -48,7 +48,7 @@ class ArenaLogic {
 			do {
 				String monsterName = monsterNames[rand.nextInt(monsterNames.length)];
 				int monsterHealth = rand.nextInt(250-100)+150;
-				int monsterAttackPower = rand.nextInt(75-10)+10;
+				int monsterAttackPower = rand.nextInt(175-50)+50;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
 			}while(n < 10);
@@ -56,7 +56,7 @@ class ArenaLogic {
 			do {
 				String monsterName = monsterNames[rand.nextInt(monsterNames.length)];
 				int monsterHealth = rand.nextInt(350-100)+150;
-				int monsterAttackPower = rand.nextInt(100-10)+10;
+				int monsterAttackPower = rand.nextInt(200-50)+50;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
 			}while(n < 15);
@@ -95,7 +95,7 @@ class ArenaLogic {
 		
 		String characterName = characterNames[rand.nextInt(characterNames.length)];
 		int characterHealth = rand.nextInt(500-150)+150;
-		int characterArmor = rand.nextInt(250-100)+100;
+		int characterArmor = rand.nextInt(20-10)+10;
 		int characterAttackPower = rand.nextInt(150-75)+75;
 		
 		System.out.println("Karakter létrehozva.");		
@@ -103,7 +103,7 @@ class ArenaLogic {
 		if(characterName.equalsIgnoreCase("TheLegend27")) {					//easter egg
 			return new Basic(characterName,9999,9999,9999);
 		}else {
-			return new Basic(characterName,characterHealth,characterArmor,characterAttackPower);
+			return new Basic(characterName,characterHealth,characterAttackPower, characterArmor);
 		}		
 	}
 	

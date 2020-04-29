@@ -1,6 +1,5 @@
 package game;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -10,27 +9,29 @@ public class GameplayLogic extends Character {
 	static Scanner scan = new Scanner(System.in);
 	static Random rand = new Random();
 
-	static Character myCharacter = ArenaLogic.makeCharacter();
+	static Character myCharacter;
 	
-	static List<Character> monsters = ArenaLogic.makeRandomMonsters(ArenaLogic.setDifficultyLevel());
+	static List<Character> monsters;
 	
 	static boolean answerChecker;
 	static int answer = -1;
 	
 	public static void gameplayLoop() throws InterruptedException  {
+		
+		myCharacter = ArenaLogic.makeCharacter();
+		monsters = ArenaLogic.makeRandomMonsters(ArenaLogic.setDifficultyLevel());
+		
 		for(Character monster : monsters) {
 			do {
-				if(monster.getEletero()>0) {
-					GameplayLogic.playerChoicePhase(monster);
+					GameplayLogic.playerChoicePhase(monster);					
 					Thread.sleep(3000);
 					GameplayLogic.playerAttackPhase(monster);
 					Thread.sleep(3000);
-					if(monster.getEletero()<0) {
+					if(monster.getEletero()>0) {
 						GameplayLogic.playerDefensePhase(monster);
 						Thread.sleep(3000);
 					}
-				}
-			}while(myCharacter.getEletero()>0);
+			}while(myCharacter.getEletero()>0 && monster.getEletero()>0);
 		}
 	}
 	
@@ -77,14 +78,18 @@ public class GameplayLogic extends Character {
 				}
 			}
 		}while(!answerChecker);
+				
 	}
 		
 	public static void playerAttackPhase(Character monster) throws InterruptedException {
 		System.out.println("--------------------------------------------------------------------------------------");
 		System.out.println();
 		System.out.println("Támadás fázis kezdõdik!");
-
+		System.out.println("szörny elõtte");
+		System.out.println(monster);
 		monster.setEletero(monster.getEletero()-myCharacter.getTamadoero());
+		System.out.println("szörny utána");
+		System.out.println(monster);
 		
 		if(monster.getEletero()<=0) {
 			myCharacter.setEletero(myCharacter.getEletero()+50);
@@ -94,15 +99,20 @@ public class GameplayLogic extends Character {
 			System.out.println("Karakter adatai:");
 			System.out.println(myCharacter);
 		}
-			
+		System.out.println("--------------------------------------------------------------------------------------");	
 	}
 		
 	public static void playerDefensePhase(Character monster) {
 		System.out.println("--------------------------------------------------------------------------------------");
 		System.out.println();
 		System.out.println("Védekezés fázis kezdõdik!");
-		
+		System.out.println("Elõtte:");
+		System.out.println(myCharacter);
 		myCharacter.setEletero(myCharacter.getEletero()-(monster.getTamadoero())-myCharacter.getPancel());
+		System.out.println("utána");
+		System.out.println(myCharacter);
+		
+		System.out.println("--------------------------------------------------------------------------------------");
 	}
 
 	@Override
