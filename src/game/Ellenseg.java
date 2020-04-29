@@ -1,4 +1,4 @@
-package Characters;
+package game;
 
 import Models.Szint;
 
@@ -68,7 +68,6 @@ public class Ellenseg extends Character{
 
 	@Override
 	public boolean harcol(Ellenseg e) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

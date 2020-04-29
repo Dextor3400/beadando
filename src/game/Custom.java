@@ -1,4 +1,4 @@
-package Characters;
+package game;
 
 public class Custom extends Character {
 

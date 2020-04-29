@@ -1,4 +1,4 @@
-package Characters;
+package game;
 
 public class Basic extends Character {
 

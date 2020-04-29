@@ -1,4 +1,4 @@
-package Characters;
+package game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,8 @@ class ArenaLogic {
 	static Scanner scan = new Scanner(System.in);
 	static Random rand = new Random();
 	
-	public static List<Ellenseg> makeRandomMonsters(int difficultyLevel) {
-		System.out.println("Szörnyek létrehozása megkezdve");
-		List<Ellenseg> monsters = new ArrayList<>();
+	public static List<Character> makeRandomMonsters(int difficultyLevel) {
+		List<Character> monsters = new ArrayList<>();
 		int n = 0;
 		String[] monsterNames = {
 				"Cryptclaw",
@@ -44,7 +43,6 @@ class ArenaLogic {
 				int monsterAttackPower = rand.nextInt(50-10)+10;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
-				System.out.println(n + " szörny létrehozva");
 			}while(n < 5);
 		}else if(difficultyLevel == 2) {
 			do {
@@ -53,7 +51,6 @@ class ArenaLogic {
 				int monsterAttackPower = rand.nextInt(75-10)+10;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
-				System.out.println(n + " szörny létrehozva");
 			}while(n < 10);
 		}else if(difficultyLevel == 3) {
 			do {
@@ -62,7 +59,6 @@ class ArenaLogic {
 				int monsterAttackPower = rand.nextInt(100-10)+10;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
-				System.out.println(n + " szörny létrehozva");
 			}while(n < 15);
 		}
 								
@@ -73,7 +69,6 @@ class ArenaLogic {
 	}
 	
 	public static Character getRandomPlayer() {
-		System.out.println("Karakter nevek létrehozása megkezdve");
 		String[] characterNames = {	
 				"Revolver Butcher",
 				"F3AR R3APER" ,
@@ -103,16 +98,13 @@ class ArenaLogic {
 		int characterArmor = rand.nextInt(250-100)+100;
 		int characterAttackPower = rand.nextInt(150-75)+75;
 		
-		System.out.println("Karakter létrehozva.");
-		System.out.println("Adatai:");
+		System.out.println("Karakter létrehozva.");		
 		
-		if(characterName.equalsIgnoreCase("TheLegend27")) {
+		if(characterName.equalsIgnoreCase("TheLegend27")) {					//easter egg
 			return new Basic(characterName,9999,9999,9999);
 		}else {
 			return new Basic(characterName,characterHealth,characterArmor,characterAttackPower);
-		}
-		
-
+		}		
 	}
 	
 	public static int setDifficultyLevel() {
@@ -205,7 +197,7 @@ class ArenaLogic {
 			System.out.println("Kérlek add meg a karaktered nevét.");
 			do {
 				playerName = scan.nextLine();
-				if(answer != null && !answer.trim().isEmpty()) {								//Checks if the user entered string is empty
+				if(playerName != null && !playerName.trim().isEmpty()) {								//Checks if the user entered string is empty
 					playerNameChecker = true;
 				}else {
 					System.out.println("Kérlek írd be a karaktered nevét!");
@@ -219,7 +211,7 @@ class ArenaLogic {
 			System.out.println("(1 és 1000 közötti értéket kell használni)");
 			do {
 				playerHealthString = scan.nextLine();
-				if(answer != null && !answer.trim().isEmpty()) {
+				if(playerHealthString != null && !playerHealthString.trim().isEmpty()) {
 					try {
 						playerHealth = Integer.parseInt(playerHealthString);
 						if(playerHealth > 0 && playerHealth < 1001) {
@@ -244,7 +236,7 @@ class ArenaLogic {
 						
 			do {
 				playerArmorString = scan.nextLine();
-				if(answer != null && !answer.trim().isEmpty()) {
+				if(playerArmorString != null && !playerArmorString.trim().isEmpty()) {
 					try {
 						playerArmor = Integer.parseInt(playerArmorString);
 						if(playerArmor > 0 && playerArmor < 501) {
@@ -267,7 +259,7 @@ class ArenaLogic {
 			
 			do {
 				playerAttackPowerString = scan.nextLine();
-				if(answer != null && !answer.trim().isEmpty()) {
+				if(playerAttackPowerString != null && !playerAttackPowerString.trim().isEmpty()) {
 					try {
 						playerAttackPower = Integer.parseInt(playerAttackPowerString);
 						if(playerAttackPower > 0 && playerAttackPower < 201) {
@@ -278,6 +270,8 @@ class ArenaLogic {
 					}catch(NumberFormatException e) {
 						System.out.println("Kérlek csak számokat írj be!");
 					}
+				}else {
+					System.out.println("Kérlek írj be értéket!");
 				}
 								
 			}while(!playerAttackPowerChecker);
@@ -296,6 +290,8 @@ class ArenaLogic {
 			return customPlayer;
 		}				
 	}
+
+
 	
 
 }

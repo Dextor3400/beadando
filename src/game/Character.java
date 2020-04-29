@@ -1,4 +1,4 @@
-package Characters;
+package game;
 
 import Models.Szint;
 
@@ -87,10 +87,5 @@ public abstract class Character implements Szint {
 	public String toString() {
 		return "Character [nev=" + nev + ", eletero=" + eletero + ", pancel=" + pancel + ", tamadoero=" + tamadoero
 				+ "]";
-	}
-
-
-	
-	
-	
+	}		
 }
