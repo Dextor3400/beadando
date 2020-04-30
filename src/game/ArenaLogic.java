@@ -62,24 +62,24 @@ class ArenaLogic {
 		if(difficultyLevel == 1) {
 			do {
 				String monsterName = monsterNames[rand.nextInt(monsterNames.length)];
-				int monsterHealth = rand.nextInt(200-50)+50;
-				int monsterAttackPower = rand.nextInt(150-50)+50;
-				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
+				int monsterHealth = rand.nextInt(300-50)+50;
+				int monsterAttackPower = rand.nextInt(100-50)+50;
+				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower)); 
 				n++;
 			}while(n < 5);
 		}else if(difficultyLevel == 2) {
 			do {
 				String monsterName = monsterNames[rand.nextInt(monsterNames.length)];
-				int monsterHealth = rand.nextInt(250-100)+100;
-				int monsterAttackPower = rand.nextInt(175-50)+50;
+				int monsterHealth = rand.nextInt(400-75)+75;
+				int monsterAttackPower = rand.nextInt(175-30)+30;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
 			}while(n < 10);
 		}else if(difficultyLevel == 3) {
 			do {
 				String monsterName = monsterNames[rand.nextInt(monsterNames.length)];
-				int monsterHealth = rand.nextInt(350-150)+150;
-				int monsterAttackPower = rand.nextInt(200-50)+50;
+				int monsterHealth = rand.nextInt(600-30)+30;
+				int monsterAttackPower = rand.nextInt(200-10)+10;
 				monsters.add(new Ellenseg(monsterName,monsterHealth,monsterAttackPower));
 				n++;
 			}while(n < 15);
@@ -92,7 +92,7 @@ class ArenaLogic {
 	public static String getRandomGameOver() {
 		String[] gameOverScreenText = {
 			"====YOUR DEFEAT HAS BROUGHT CHAOS TO THE FEDERATION. YOUR COWARDICE AND BETRAYAL SHALL BE KNOWN THROUGHOUT THE STARS. DISGRACE WILL FOLLOW YOUR FAMILY FOR CENTURIES.===\r\n" + 
-			"==============================ONCE ADORED AND WORSHIPPED BY ALL, YOUR BODY WILL SERVE AS A REMINDEN OF THE PRICE OF FAILURE.============================================\r\n" + 
+			"==============================ONCE ADORED AND WORSHIPPED BY ALL, YOUR BODY WILL SERVE AS A REMINDER OF THE PRICE OF FAILURE.============================================\r\n" + 
 			"=======================================================OH, THE HORRIBLE PAIN OF DEFEAT....==============================================================================\r\n" + 
 			"\r\n" + 
 			"===================================================================GAME OVER=============================================================================================",
@@ -103,7 +103,7 @@ class ArenaLogic {
 			"=================YOU LOST===================" + "\r" + "\n",
 			"You have ignited an accidental nuclear war." + "\r" + "\n" + 
 			"And no, there is no animated display of a " + "\r" + "\n" + 
-			"mushroom cloid with parts of bodies flying " + "\r" + "\n" + 
+			"mushroom cloud with parts of bodies flying " + "\r" + "\n" + 
 			"             through the air." + "\r" + "\n" + 
 			"          We do not reward failure. " + "\r" + "\n" + 
 			"                 Game Over." + "\r" + "\n",
@@ -111,12 +111,28 @@ class ArenaLogic {
 			"			       Game over " + "\r" + "\n" ,
 			"                GAME OVER " + "\r" + "\n" +
 			"               INSERT COINS " + 
-			"               TO CONTINUE " + "\r" + "\n" 
+			"               TO CONTINUE " + "\r" + "\n",
+			"===================FISSION====================\r\n" +
+			"===================MAILED!====================\r\n",
+			"==================GAME OVER=================="
 			
 			
 		};
 				
 		return gameOverScreenText[rand.nextInt(gameOverScreenText.length)];
+	}
+	
+	public static String getRandomWinningScreen() {
+		String[] winningScreenTexts = {
+			"           Megszerezted a 'THE HOLY HAND GRENADE' nevû tárgyat!\r\n" + 
+			" A tárgy erejével megmentettél mindenkit és megmentetted az emberiséget!\r\n" + 
+			"                        Egy Igazi Hõs vagy!\r\n" + 
+			"================================NYERTÉL!================================\");",	
+			"=============================You're Winner !============================",
+			"==========================MISSION ACCOMPLISHED!=========================="
+		};
+		
+		return winningScreenTexts[rand.nextInt(winningScreenTexts.length)];
 	}
 	
 	public static Character getRandomPlayer() throws InterruptedException {
@@ -145,9 +161,9 @@ class ArenaLogic {
 		};
 		
 		String characterName = characterNames[rand.nextInt(characterNames.length)];
-		int characterHealth = rand.nextInt(500-100)+100;
-		int characterArmor = rand.nextInt(50-10)+10;
-		int characterAttackPower = rand.nextInt(150-75)+75;
+		int characterHealth = rand.nextInt(400-100)+100;
+		int characterArmor = rand.nextInt(75-30)+30;
+		int characterAttackPower = rand.nextInt(110-75)+75;
 		
 		System.out.println("Karaktered létrehozva." + "\n");
 		Arena.lineBreak();
@@ -345,6 +361,7 @@ class ArenaLogic {
 			return basicPlayer;
 		}else {
 			Thread.sleep(500);
+			Arena.lineBreak();
 			return customPlayer;
 		}				
 	}

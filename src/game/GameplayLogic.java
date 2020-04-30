@@ -15,6 +15,8 @@ public class GameplayLogic extends Character {
 	
 	static boolean answerChecker;
 	
+	static int difficultyLevel;
+	
 	public static void gameplayLoop() throws InterruptedException  {
 		
 		myCharacter = ArenaLogic.makeCharacter();
@@ -25,7 +27,9 @@ public class GameplayLogic extends Character {
 		System.out.println("Támadási ereje: " + myCharacter.getTamadoero() + "\n");
 		Thread.sleep(500);
 		
-		monsters = ArenaLogic.makeRandomMonsters(ArenaLogic.setDifficultyLevel());
+		difficultyLevel = ArenaLogic.setDifficultyLevel();
+		
+		monsters = ArenaLogic.makeRandomMonsters(difficultyLevel);
 		
 		for(Character monster : monsters) {
 			do {
@@ -45,10 +49,7 @@ public class GameplayLogic extends Character {
 		}
 		
 		if(myCharacter.getEletero()>0) {
-			System.out.println("Megszerezted a 'THE HOLY HAND GRENADE' nevû tárgyat!");
-			System.out.println("A tárgy erejével megmentettél mindenkit és megmentetted az emberiséget!");
-			System.out.println("Egy Igazi Hõs vagy!");
-			System.out.println("==============NYERTÉL!==============");
+			System.out.println(ArenaLogic.getRandomWinningScreen());
 		}else {
 			System.out.println(ArenaLogic.getRandomGameOver());
 		}
@@ -56,8 +57,15 @@ public class GameplayLogic extends Character {
 	
 	
 	public static int playerChoicePhase(Character monster) throws InterruptedException {
-				
-		int healAmount = rand.nextInt(200-20)+20; 
+		int healAmount = -1;
+		
+		if(difficultyLevel == 1) {
+			healAmount = rand.nextInt(100-50)+50; 
+		}else if(difficultyLevel == 2) {
+			healAmount = rand.nextInt(150-75)+75;
+		}else {
+			healAmount = rand.nextInt(200-100)+100;
+		}
 		Arena.lineBreak();
 		System.out.println("Döntés fázis kezdõdik!"+ "\n");
 		System.out.println("Karaktered adatai: ");
@@ -87,7 +95,8 @@ public class GameplayLogic extends Character {
 					}else if(answer == 2) {
 						myCharacter.setEletero(myCharacter.getEletero()+healAmount);
 						System.out.println("Döntés regisztrálva. (2)");
-						System.out.println("Karakter élete: " + + myCharacter.getEletero());
+						System.out.println("Karaktered élete növekedett  " + healAmount + " egységgel");
+						System.out.println("Karaktered új élete: " + myCharacter.getEletero());
 						System.out.println("Következõ fázis indul." + "\n");
 						playerChoice = 2;
 						answerChecker = true;						
@@ -116,19 +125,20 @@ public class GameplayLogic extends Character {
 				
 		if(monster.getEletero()<=0) {
 			
-			int levelUpHealthPoints = rand.nextInt(200-100)+100;
-			int levelUpArmor = rand.nextInt(100-20);
+			int levelUpHealthPoints = rand.nextInt(150-100)+100;
+			int levelUpArmor = rand.nextInt(40-20)+20;
 			int levelUpAttackPower = rand.nextInt(50-10)+10;
 			
-			System.out.println(monster.getNev() + " meghalt!");
-			System.out.println("Karaktered szinten lépett!");
+			System.out.println("Legyõzted " + monster.getNev() + " nevû ellenfeledet!");
+			
+			System.out.println("KARAKTERED SZINTET LÉPETT!");
 			System.out.println("ÉLETERÕD: "  + levelUpHealthPoints + " PONTTAL NÖVEKEDETT" );
 			System.out.println("PÁNCÉLOD: " + levelUpArmor + " PONTTAL NÖVEKEDETT");
 			System.out.println("TÁMADÓERÕD: " + levelUpAttackPower + " PONTTAL NÖVEKEDETT" + "\n");
 			
-			myCharacter.setEletero(myCharacter.getEletero() + levelUpHealthPoints);
-			myCharacter.setEletero(myCharacter.getPancel() + levelUpArmor);
-			myCharacter.setTamadoero(myCharacter.getTamadoero() + levelUpAttackPower);
+			myCharacter.setEletero((myCharacter.getEletero() + levelUpHealthPoints));
+			myCharacter.setPancel((myCharacter.getPancel() + levelUpArmor));
+			myCharacter.setTamadoero((myCharacter.getTamadoero() + levelUpAttackPower));
 			Thread.sleep(2000);
 		}
 		Arena.lineBreak();
